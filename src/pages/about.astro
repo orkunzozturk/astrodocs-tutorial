@@ -1,16 +1,17 @@
 ---
-import '../styles/global.css'
-
+import "../styles/global.css";
+import Navigation from "../components/navigation.astro";
+import Footer from "../components/Footer.astro";
 const pageTitle = "About Me";
 
 const identity = {
   firstName: "Sarah",
   country: "Canada",
   occupation: "Teacher",
-  hobbies: ["photography", "birdwatching", "baseball"]
-}
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
 
-const skills = ["HTML", "CSS", "Javascript", "React", "Astro"]
+const skills = ["HTML", "CSS", "Javascript", "React", "Astro"];
 
 const happy = true;
 const finished = true;
@@ -18,17 +19,17 @@ const goal = 3;
 
 const skillColor = "blue";
 const skillBg = "red";
-const textCase = "lowercase"
+const textCase = "lowercase";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-    <style define:vars={{skillColor, skillBg, textCase}}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <style define:vars={{ skillColor, skillBg, textCase }}>
       h1 {
         color: purple;
         font-size: 4rem;
@@ -40,25 +41,33 @@ const textCase = "lowercase"
         text-transform: var(--textCase);
       }
     </style>
-	</head>
+  </head>
   <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+    <Navigation />
     <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
-    <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+    <p>
+      I am working through Astro's introductory tutorial. This is the second
+      page on my website, and it's the first one I built myself!
+    </p>
 
-    <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    <p>
+      This site will update as I complete more of the tutorial, so keep checking
+      back and see how my journey is going!
+    </p>
     <p>Some facts about me:</p>
     <ul>
       <li>My name is {identity.firstName}</li>
-      <li>I live in {identity.country} and work as a {identity.occupation}. </li>
+      <li>I live in {identity.country} and work as a {identity.occupation}.</li>
       {
-      identity.hobbies.length >= 3 &&
-       <li>{identity.hobbies.length} of my hobbies are {identity.hobbies[0]}, {identity.hobbies[1]} and {identity.hobbies[2]} </li>
-       }
+        identity.hobbies.length >= 3 && (
+          <li>
+            {identity.hobbies.length} of my hobbies are {identity.hobbies[0]},{" "}
+            {identity.hobbies[1]} and {identity.hobbies[2]}{" "}
+          </li>
+        )
+      }
     </ul>
     <p>My skills are:</p>
     <ul>
@@ -68,6 +77,13 @@ const textCase = "lowercase"
 
     {finished && <p>I finished this tutorial!</p>}
 
-    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    {
+      goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not 3 days.</p>
+      )
+    }
+    <Footer />
   </body>
 </html>
